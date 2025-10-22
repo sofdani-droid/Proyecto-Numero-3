@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Daniela Natalia Pelaitay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .photo-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 4em;
+            opacity: 0.5;
+        }
+
+        .header-info h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .btn-download {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-download:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-info-small {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            color: var(--gray);
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+            font-size: 0.95em;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-row:hover {
+            background: #e2e8f0;
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            font-size: 1.5em;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--dark);
+            display: block;
+            font-size: 0.95em;
+        }
+
+        .info-value {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .hobby-item {
+            background: var(--light);
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .hobby-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .hobby-icon {
+            font-size: 1.8em;
+        }
+
+        .languages {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-badge {
+            background: white;
+            padding: 15px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: var(--dark);
+            border: 3px solid var(--primary);
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .language-badge:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                justify-items: center;
+            }
+
+            .photo-container {
+                width: 160px;
+                height: 160px;
+            }
+
+            .header-info h1 {
+                font-size: 2.2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .grid-2, .skills-grid, .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .btn-download {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="photo-container">
+                    <!-- Reemplazar src con la ruta de tu imagen en GitHub -->
+                    <!-- Ejemplo: src="./images/foto-perfil.jpg" -->
+                    <img src="" alt="Daniela Pelaitay" id="profilePhoto" style="display: none;">
+                    <div class="photo-placeholder" id="photoPlaceholder">👤</div>
+                </div>
+                
+                <div class="header-info">
+                    <h1>Daniela Natalia Pelaitay</h1>
+                    <p class="subtitle">Emprendedora y Estudiante de Marketing</p>
+                    
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/message/G5RJZKJAZIE3H1" class="btn btn-whatsapp" target="_blank">
+                            <span>💬</span>
+                            <span>WhatsApp</span>
+                        </a>
+                        
+                        <!-- IMPORTANTE: Reemplazar ./cv-daniela-pelaitay.pdf con la ruta de tu PDF en GitHub -->
+                        <a href="./cv-daniela-pelaitay.pdf" class="btn btn-download" download>
+                            <span>📥</span>
+                            <span>Descargar CV</span>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-info-small">
+                        📍 Herrera 4312, CP 3300 - Posadas, Misiones
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Educación -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>📚</span>
+                    <span>Educación</span>
+                </h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title">Secundario Completo</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Carrera de Marketing</div>
+                        <div class="card-subtitle">En proceso</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capacitaciones -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>🎓</span>
+                    <span>Capacitaciones</span>
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-badge">Ofimática Básica</div>
+                    <div class="skill-badge">Manejo de Redes Sociales</div>
+                    <div class="skill-badge">Cocina Básica</div>
+                    <div class="skill-badge">Manejo de Agenda</div>
+                    <div class="skill-badge">Manejo de IA con Fluidez</div>
+                </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>🌎</span>
+                    <span>Idiomas</span>
+                </h2>
+                <div class="languages">
+                    <div class="language-badge">🇦🇷 Español - Nativo</div>
+                    <div class="language-badge">🇬🇧 Inglés - Básico</div>
+                </div>
+            </div>
+
+            <!-- Disponibilidad y Transporte -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>⚡</span>
+                    <span>Disponibilidad</span>
+                </h2>
+                <div class="info-row">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-text">
+                        <span class="info-label">Horario Disponible</span>
+                        <span class="info-value">Lunes a Viernes de 6:00 a 12:00 AM</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">🏍️</div>
+                    <div class="info-text">
+                        <span class="info-label">Movilidad</span>
+                        <span class="info-value">Cuento con moto propia</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <span class="info-label">Disponibilidad de Radicación</span>
+                        <span class="info-value">No disponible para mudanza</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>🎨</span>
+                    <span>Intereses y Hobbies</span>
+                </h2>
+                <div class="hobbies-grid">
+                    <div class="hobby-item">
+                        <div class="hobby-icon">🎵</div>
+                        <div>Música Electrónica</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">🐱</div>
+                        <div>Cuidar de mis gatos</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">🌱</div>
+                        <div>Cuidar plantas</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">👨‍👩‍👧</div>
+                        <div>Estar con mi familia</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">👥</div>
+                        <div>Salir con amigos</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">🎬</div>
+                        <div>Ir al cine</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">📺</div>
+                        <div>Películas y series</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">🍰</div>
+                        <div>Cocinar dulces</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">✂️</div>
+                        <div>Hacer artesanías</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script para mostrar la imagen si existe
+        const img = document.getElementById('profilePhoto');
+        const placeholder = document.getElementById('photoPlaceholder');
+        
+        img.onload = function() {
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        };
+        
+        img.onerror = function() {
+            img.style.display = 'none';
+            placeholder.style.display = 'flex';
+        };
+        
+        // Intentar cargar la imagen
+        if (img.src) {
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
